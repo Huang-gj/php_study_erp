@@ -1,0 +1,59 @@
+type BaseResponse {
+    Code int64  `json:"code"`
+    Msg  string `json:"msg"`
+}
+
+type AdminInfo {
+    AdminUserId    int64  `json:"admin_user_id"`
+    Username       string `json:"username"`
+    Nickname       string `json:"nickname"`
+    RealName       string `json:"real_name"`
+    PhoneNumber    string `json:"phone_number"`
+    Avatar         string `json:"avatar"`
+    DepartmentName string `json:"department_name"`
+    RoleName       string `json:"role_name"`
+    IsSuperAdmin   int64  `json:"is_super_admin"`
+}
+
+type AdminLoginRequest {
+    Username   string `json:"username"`
+    Password   string `json:"password"`
+    LoginIp    string `json:"login_ip,optional"`
+    DeviceName string `json:"device_name,optional"`
+    ClientType string `json:"client_type,optional"`
+}
+
+type AdminLoginData {
+    AccessToken string    `json:"access_token"`
+    TokenType   string    `json:"token_type"`
+    ExpiresIn   int64     `json:"expires_in"`
+    AdminInfo   AdminInfo `json:"admin_info"`
+}
+
+type AdminLoginResponse {
+    Code int64          `json:"code"`
+    Msg  string         `json:"msg"`
+    Data AdminLoginData `json:"data"`
+}
+
+type AdminProfileRequest {
+}
+
+type AdminProfileData {
+    AdminInfo AdminInfo `json:"admin_info"`
+}
+
+type AdminProfileResponse {
+    Code int64            `json:"code"`
+    Msg  string           `json:"msg"`
+    Data AdminProfileData `json:"data"`
+}
+
+type AdminLogoutRequest {
+}
+
+type AdminLogoutResponse {
+    Code int64       `json:"code"`
+    Msg  string      `json:"msg"`
+    Data interface{} `json:"data"`
+}

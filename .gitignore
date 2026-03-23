@@ -1,0 +1,74 @@
+# ==================== 通用配置 ====================
+# 编辑器/IDE 配置文件
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 日志文件
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+php_errors.log
+
+# 缓存文件
+*.cache
+.DS_Store
+
+# ==================== PHP 后端配置 ====================
+# PHP 环境依赖/扩展
+vendor/           # Composer 依赖目录（composer install 生成）
+composer.lock     # 可选：如果团队统一依赖版本可取消注释，否则建议忽略
+.phpunit.result.cache
+.php_cs.cache
+
+# PHP 环境配置（敏感信息）
+.env              # 环境变量文件（数据库密码、密钥等）
+.env.local
+.env.*.local
+config/local.php  # 本地配置覆盖文件
+
+# PHP 临时/缓存文件
+tmp/
+temp/
+cache/
+session/
+uploads/          # 用户上传文件目录（避免提交用户数据）
+*.pid
+*.gz
+
+# PHP 调试/测试相关
+phpunit.xml
+.phpunit.result.cache
+coverage/
+
+# ==================== Vue 前端配置 ====================
+# Node.js 依赖
+node_modules/     # npm/yarn 安装的依赖包
+
+# 构建产物
+dist/             # Vue 打包后的生产环境文件
+build/
+dist-ssr/
+*.local
+
+# Vue CLI 相关
+.vuepress/dist/
+.npmrc            # 可选：如果有私有 npm 源配置可忽略
+
+# 环境变量（前端敏感配置）
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 性能分析文件
+*.cpuprofile

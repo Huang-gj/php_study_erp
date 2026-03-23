@@ -1,0 +1,49 @@
+syntax = "v1"
+
+info (
+    title:   "admin"
+    desc:    "erp admin api"
+    author:  "huang"
+    email:   "2302719556@qq.com"
+    version: "1.0"
+)
+
+import (
+    "make/admin.api"
+    "make/sales.api"
+)
+
+@server (
+    prefix: admin
+    group:  auth
+)
+service admin {
+    @handler AdminLogin
+    post /login (AdminLoginRequest) returns (AdminLoginResponse)
+}
+
+@server (
+    prefix: admin
+    jwt:    Auth
+    group:  auth
+)
+service admin {
+    @handler AdminProfile
+    post /profile (AdminProfileRequest) returns (AdminProfileResponse)
+
+    @handler AdminLogout
+    post /logout (AdminLogoutRequest) returns (AdminLogoutResponse)
+}
+
+@server (
+    prefix: sales/report
+    jwt:    Auth
+    group:  order
+)
+service sales {
+    @handler SalesReportSummary
+    post /summary (SalesReportSummaryRequest) returns (SalesReportSummaryResponse)
+
+    @handler SalesOrderList
+    post /order-list (SalesOrderListRequest) returns (SalesOrderListResponse)
+}
