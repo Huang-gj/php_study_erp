@@ -54,3 +54,1629 @@ type SalesOrderListResponse {
     Msg  string             `json:"msg"`
     Data SalesOrderListData `json:"data"`
 }
+
+type SalesOrderBootstrapRequest {
+}
+
+type SalesOrderOption {
+    Label string `json:"label"`
+    Value int64  `json:"value"`
+}
+
+type SalesOrderCustomerOption {
+    CustomerId           int64  `json:"customer_id"`
+    CustomerName         string `json:"customer_name"`
+    TaxNo                string `json:"tax_no"`
+    DefaultTaxRate       string `json:"default_tax_rate"`
+    DefaultPaymentMethod int64  `json:"default_payment_method"`
+}
+
+type SalesOrderProductOption {
+    ProductId            int64  `json:"product_id"`
+    ProductCode          string `json:"product_code"`
+    ProductName          string `json:"product_name"`
+    ProductSpec          string `json:"product_spec"`
+    UnitName             string `json:"unit_name"`
+    WorkshopType         int64  `json:"workshop_type"`
+    DefaultTaxRate       string `json:"default_tax_rate"`
+    DefaultPrice         string `json:"default_price"`
+    DefaultTaxPrice      string `json:"default_tax_price"`
+    CurrentStockQuantity string `json:"current_stock_quantity"`
+}
+
+type SalesOrderBootstrapData {
+    Customers            []SalesOrderCustomerOption `json:"customers"`
+    Products             []SalesOrderProductOption  `json:"products"`
+    OrderTypeOptions     []SalesOrderOption         `json:"order_type_options"`
+    ShipStateOptions     []SalesOrderOption         `json:"ship_state_options"`
+    PaymentMethodOptions []SalesOrderOption         `json:"payment_method_options"`
+}
+
+type SalesOrderBootstrapResponse {
+    Code int64                  `json:"code"`
+    Msg  string                 `json:"msg"`
+    Data SalesOrderBootstrapData `json:"data"`
+}
+
+type SalesOrderModuleListRequest {
+    ContractNo   string `json:"contract_no,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    ProductName  string `json:"product_name,optional"`
+    ProductSpec  string `json:"product_spec,optional"`
+    OrderDate    string `json:"order_date,optional"`
+    OrderType    int64  `json:"order_type,optional"`
+    ShipState    int64  `json:"ship_state,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesOrderModuleListItem {
+    Id                    int64  `json:"id"`
+    SalesOrderId          int64  `json:"sales_order_id"`
+    ContractNo            string `json:"contract_no"`
+    CustomerName          string `json:"customer_name"`
+    OrderDate             string `json:"order_date"`
+    DeliveryDate          string `json:"delivery_date"`
+    OrderType             int64  `json:"order_type"`
+    OrderTypeText         string `json:"order_type_text"`
+    AuditState            int64  `json:"audit_state"`
+    AuditStatus           string `json:"audit_status"`
+    OrderState            int64  `json:"order_state"`
+    OrderStateText        string `json:"order_state_text"`
+    ShipState             int64  `json:"ship_state"`
+    ShipStateText         string `json:"ship_state_text"`
+    ProductCode           string `json:"product_code"`
+    ProductName           string `json:"product_name"`
+    ProductSpec           string `json:"product_spec"`
+    Quantity              string `json:"quantity"`
+    TaxPrice              string `json:"tax_price"`
+    Price                 string `json:"price"`
+    TotalTaxAmount        string `json:"total_tax_amount"`
+    ExpectedStockQuantity string `json:"expected_stock_quantity"`
+}
+
+type SalesOrderModuleListData {
+    List     []SalesOrderModuleListItem `json:"list"`
+    Total    int64                      `json:"total"`
+    Page     int64                      `json:"page"`
+    PageSize int64                      `json:"page_size"`
+}
+
+type SalesOrderModuleListResponse {
+    Code int64                    `json:"code"`
+    Msg  string                   `json:"msg"`
+    Data SalesOrderModuleListData `json:"data"`
+}
+
+type SalesOrderDetailRequest {
+    SalesOrderId int64 `json:"sales_order_id"`
+}
+
+type SalesOrderDetailHeader {
+    SalesOrderId      int64  `json:"sales_order_id"`
+    ContractNo        string `json:"contract_no"`
+    CustomerName      string `json:"customer_name"`
+    CustomerTaxNo     string `json:"customer_tax_no"`
+    OrderType         int64  `json:"order_type"`
+    OrderTypeText     string `json:"order_type_text"`
+    OrderDate         string `json:"order_date"`
+    DeliveryDate      string `json:"delivery_date"`
+    AuditState        int64  `json:"audit_state"`
+    AuditStatus       string `json:"audit_status"`
+    OrderState        int64  `json:"order_state"`
+    OrderStateText    string `json:"order_state_text"`
+    ShipState         int64  `json:"ship_state"`
+    ShipStateText     string `json:"ship_state_text"`
+    PaymentMethod     int64  `json:"payment_method"`
+    PaymentMethodText string `json:"payment_method_text"`
+    InvoiceRequired   int64  `json:"invoice_required"`
+    TotalQuantity     string `json:"total_quantity"`
+    TotalAmount       string `json:"total_amount"`
+    TotalTaxAmount    string `json:"total_tax_amount"`
+    LogisticsFee      string `json:"logistics_fee"`
+    OtherFee          string `json:"other_fee"`
+    Remark            string `json:"remark"`
+}
+
+type SalesOrderDetailItem {
+    SalesOrderItemId      int64  `json:"sales_order_item_id"`
+    LineNo                int64  `json:"line_no"`
+    ProductId             int64  `json:"product_id"`
+    ProductCode           string `json:"product_code"`
+    ProductName           string `json:"product_name"`
+    ProductSpec           string `json:"product_spec"`
+    UnitName              string `json:"unit_name"`
+    Quantity              string `json:"quantity"`
+    Price                 string `json:"price"`
+    TaxPrice              string `json:"tax_price"`
+    Amount                string `json:"amount"`
+    TaxAmount             string `json:"tax_amount"`
+    ExpectedStockQuantity string `json:"expected_stock_quantity"`
+    ShippedQuantity       string `json:"shipped_quantity"`
+    Remark                string `json:"remark"`
+}
+
+type SalesOrderProgressLog {
+    ProgressLogId     int64  `json:"progress_log_id"`
+    StepCode          int64  `json:"step_code"`
+    StepName          string `json:"step_name"`
+    StepState         int64  `json:"step_state"`
+    StepStateText     string `json:"step_state_text"`
+    StartTime         string `json:"start_time"`
+    FinishTime        string `json:"finish_time"`
+    OperatorUserName  string `json:"operator_user_name"`
+    RelatedNo         string `json:"related_no"`
+    Remark            string `json:"remark"`
+}
+
+type SalesOrderDetailData {
+    Header       SalesOrderDetailHeader `json:"header"`
+    Items        []SalesOrderDetailItem `json:"items"`
+    ProgressLogs []SalesOrderProgressLog `json:"progress_logs"`
+}
+
+type SalesOrderDetailResponse {
+    Code int64               `json:"code"`
+    Msg  string              `json:"msg"`
+    Data SalesOrderDetailData `json:"data"`
+}
+
+type SalesOrderCreateItemRequest {
+    ProductId             int64   `json:"product_id"`
+    Quantity              float64 `json:"quantity"`
+    TaxPrice              float64 `json:"tax_price,optional"`
+    Price                 float64 `json:"price,optional"`
+    ExpectedStockQuantity float64 `json:"expected_stock_quantity,optional"`
+    Remark                string  `json:"remark,optional"`
+}
+
+type SalesOrderCreateRequest {
+    ContractNo      string                        `json:"contract_no,optional"`
+    CustomerId      int64                         `json:"customer_id"`
+    OrderType       int64                         `json:"order_type"`
+    OrderDate       string                        `json:"order_date"`
+    DeliveryDate    string                        `json:"delivery_date,optional"`
+    PaymentMethod   int64                         `json:"payment_method,optional"`
+    InvoiceRequired int64                         `json:"invoice_required,optional"`
+    TaxRate         float64                       `json:"tax_rate,optional"`
+    LogisticsFee    float64                       `json:"logistics_fee,optional"`
+    OtherFee        float64                       `json:"other_fee,optional"`
+    Remark          string                        `json:"remark,optional"`
+    Items           []SalesOrderCreateItemRequest `json:"items"`
+}
+
+type SalesOrderCreateData {
+    SalesOrderId int64  `json:"sales_order_id"`
+    ContractNo   string `json:"contract_no"`
+}
+
+type SalesOrderCreateResponse {
+    Code int64               `json:"code"`
+    Msg  string              `json:"msg"`
+    Data SalesOrderCreateData `json:"data"`
+}
+
+type SalesOrderOperateRequest {
+    SalesOrderId int64 `json:"sales_order_id"`
+}
+
+type SalesOrderOperateData {
+}
+
+type SalesOrderShipInvoiceData {
+    OutboundNo string `json:"outbound_no"`
+    InvoiceNo  string `json:"invoice_no"`
+}
+
+type SalesOrderOperateResponse {
+    Code int64                 `json:"code"`
+    Msg  string                `json:"msg"`
+    Data SalesOrderOperateData `json:"data"`
+}
+
+type SalesOrderShipInvoiceResponse {
+    Code int64                  `json:"code"`
+    Msg  string                 `json:"msg"`
+    Data SalesOrderShipInvoiceData `json:"data"`
+}
+
+type SalesBusinessBootstrapRequest {
+}
+
+type SalesBusinessOption {
+    Label string `json:"label"`
+    Value int64  `json:"value"`
+}
+
+type SalesBusinessCustomerOption {
+    CustomerId           int64  `json:"customer_id"`
+    CustomerName         string `json:"customer_name"`
+    TaxNo                string `json:"tax_no"`
+    DefaultTaxRate       string `json:"default_tax_rate"`
+    DefaultPaymentMethod int64  `json:"default_payment_method"`
+}
+
+type SalesBusinessProductOption {
+    ProductId       int64  `json:"product_id"`
+    ProductCode     string `json:"product_code"`
+    ProductName     string `json:"product_name"`
+    ProductSpec     string `json:"product_spec"`
+    UnitName        string `json:"unit_name"`
+    DefaultTaxRate  string `json:"default_tax_rate"`
+    DefaultPrice    string `json:"default_price"`
+    DefaultTaxPrice string `json:"default_tax_price"`
+}
+
+type SalesBusinessBootstrapData {
+    Customers           []SalesBusinessCustomerOption `json:"customers"`
+    Products            []SalesBusinessProductOption  `json:"products"`
+    AuditStateOptions   []SalesBusinessOption         `json:"audit_state_options"`
+    ConvertStateOptions []SalesBusinessOption         `json:"convert_state_options"`
+}
+
+type SalesBusinessBootstrapResponse {
+    Code int64                    `json:"code"`
+    Msg  string                   `json:"msg"`
+    Data SalesBusinessBootstrapData `json:"data"`
+}
+
+type SalesBusinessListRequest {
+    CustomerName string `json:"customer_name,optional"`
+    OrderDate    string `json:"order_date,optional"`
+    AuditState   int64  `json:"audit_state,optional"`
+    ConvertState int64  `json:"convert_state,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesBusinessListItem {
+    Id               int64  `json:"id"`
+    BusinessOrderId  int64  `json:"business_order_id"`
+    BusinessOrderNo  string `json:"business_order_no"`
+    CustomerName     string `json:"customer_name"`
+    OrderDate        string `json:"order_date"`
+    DeliveryDate     string `json:"delivery_date"`
+    TaxRate          string `json:"tax_rate"`
+    AuditState       int64  `json:"audit_state"`
+    AuditStateText   string `json:"audit_state_text"`
+    ConvertState     int64  `json:"convert_state"`
+    ConvertStateText string `json:"convert_state_text"`
+    ProductCode      string `json:"product_code"`
+    ProductName      string `json:"product_name"`
+    ProductSpec      string `json:"product_spec"`
+    UnitName         string `json:"unit_name"`
+    Quantity         string `json:"quantity"`
+    TaxPrice         string `json:"tax_price"`
+    TaxAmount        string `json:"tax_amount"`
+    MakerUserName    string `json:"maker_user_name"`
+    AuditUserName    string `json:"audit_user_name"`
+    CreateTime       string `json:"create_time"`
+}
+
+type SalesBusinessListData {
+    List     []SalesBusinessListItem `json:"list"`
+    Total    int64                   `json:"total"`
+    Page     int64                   `json:"page"`
+    PageSize int64                   `json:"page_size"`
+}
+
+type SalesBusinessListResponse {
+    Code int64                 `json:"code"`
+    Msg  string                `json:"msg"`
+    Data SalesBusinessListData `json:"data"`
+}
+
+type SalesBusinessDetailRequest {
+    BusinessOrderId int64 `json:"business_order_id"`
+}
+
+type SalesBusinessDetailHeader {
+    BusinessOrderId  int64  `json:"business_order_id"`
+    BusinessOrderNo  string `json:"business_order_no"`
+    CustomerId       int64  `json:"customer_id"`
+    CustomerName     string `json:"customer_name"`
+    OrderDate        string `json:"order_date"`
+    DeliveryDate     string `json:"delivery_date"`
+    TaxRate          string `json:"tax_rate"`
+    ItemCount        int64  `json:"item_count"`
+    TotalQuantity    string `json:"total_quantity"`
+    TotalAmount      string `json:"total_amount"`
+    TotalTaxAmount   string `json:"total_tax_amount"`
+    AuditState       int64  `json:"audit_state"`
+    AuditStateText   string `json:"audit_state_text"`
+    ConvertState     int64  `json:"convert_state"`
+    ConvertStateText string `json:"convert_state_text"`
+    MakerUserName    string `json:"maker_user_name"`
+    AuditUserName    string `json:"audit_user_name"`
+    CreateTime       string `json:"create_time"`
+    AuditTime        string `json:"audit_time"`
+    Remark           string `json:"remark"`
+}
+
+type SalesBusinessDetailItem {
+    BusinessOrderItemId int64  `json:"business_order_item_id"`
+    LineNo              int64  `json:"line_no"`
+    ProductId           int64  `json:"product_id"`
+    ProductCode         string `json:"product_code"`
+    ProductName         string `json:"product_name"`
+    ProductSpec         string `json:"product_spec"`
+    UnitName            string `json:"unit_name"`
+    Quantity            string `json:"quantity"`
+    TaxRate             string `json:"tax_rate"`
+    Price               string `json:"price"`
+    TaxPrice            string `json:"tax_price"`
+    Amount              string `json:"amount"`
+    TaxAmount           string `json:"tax_amount"`
+    Remark              string `json:"remark"`
+}
+
+type SalesBusinessDetailData {
+    Header SalesBusinessDetailHeader `json:"header"`
+    Items  []SalesBusinessDetailItem `json:"items"`
+}
+
+type SalesBusinessDetailResponse {
+    Code int64                   `json:"code"`
+    Msg  string                  `json:"msg"`
+    Data SalesBusinessDetailData `json:"data"`
+}
+
+type SalesBusinessCreateItemRequest {
+    ProductId int64   `json:"product_id"`
+    Quantity  float64 `json:"quantity"`
+    Price     float64 `json:"price,optional"`
+    TaxPrice  float64 `json:"tax_price,optional"`
+    Remark    string  `json:"remark,optional"`
+}
+
+type SalesBusinessCreateRequest {
+    BusinessOrderNo string                           `json:"business_order_no,optional"`
+    CustomerId      int64                            `json:"customer_id"`
+    OrderDate       string                           `json:"order_date"`
+    DeliveryDate    string                           `json:"delivery_date,optional"`
+    TaxRate         float64                          `json:"tax_rate,optional"`
+    Remark          string                           `json:"remark,optional"`
+    Items           []SalesBusinessCreateItemRequest `json:"items"`
+}
+
+type SalesBusinessCreateData {
+    BusinessOrderId int64  `json:"business_order_id"`
+    BusinessOrderNo string `json:"business_order_no"`
+    CreateTime      string `json:"create_time"`
+}
+
+type SalesBusinessCreateResponse {
+    Code int64                   `json:"code"`
+    Msg  string                  `json:"msg"`
+    Data SalesBusinessCreateData `json:"data"`
+}
+
+type SalesBusinessBatchDeleteRequest {
+    BusinessOrderIds []int64 `json:"business_order_ids"`
+}
+
+type SalesBusinessBatchDeleteData {
+    DeletedCount int64 `json:"deleted_count"`
+}
+
+type SalesBusinessBatchDeleteResponse {
+    Code int64                        `json:"code"`
+    Msg  string                       `json:"msg"`
+    Data SalesBusinessBatchDeleteData `json:"data"`
+}
+
+type SalesBusinessGenerateSalesOrderRequest {
+    BusinessOrderId int64 `json:"business_order_id"`
+}
+
+type SalesBusinessGenerateSalesOrderData {
+    SalesOrderId int64  `json:"sales_order_id"`
+    ContractNo   string `json:"contract_no"`
+}
+
+type SalesBusinessGenerateSalesOrderResponse {
+    Code int64                               `json:"code"`
+    Msg  string                              `json:"msg"`
+    Data SalesBusinessGenerateSalesOrderData `json:"data"`
+}
+
+type SalesProgressListRequest {
+    ContractNo   string `json:"contract_no,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    ProductName  string `json:"product_name,optional"`
+    ProductSpec  string `json:"product_spec,optional"`
+    OrderDate    string `json:"order_date,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesProgressStepItem {
+    StepCode  int64  `json:"step_code"`
+    StepName  string `json:"step_name"`
+    StepLabel string `json:"step_label"`
+    StepState int64  `json:"step_state"`
+}
+
+type SalesProgressListItem {
+    Id                 int64                   `json:"id"`
+    SalesOrderId       int64                   `json:"sales_order_id"`
+    ContractNo         string                  `json:"contract_no"`
+    CustomerName       string                  `json:"customer_name"`
+    OrderDate          string                  `json:"order_date"`
+    DeliveryDate       string                  `json:"delivery_date"`
+    SalesTotalPrice    string                  `json:"sales_total_price"`
+    DrawerUserName     string                  `json:"drawer_user_name"`
+    Remark             string                  `json:"remark"`
+    AuditState         int64                   `json:"audit_state"`
+    AuditStatus        string                  `json:"audit_status"`
+    OrderState         int64                   `json:"order_state"`
+    OrderStateText     string                  `json:"order_state_text"`
+    ReconcileState     int64                   `json:"reconcile_state"`
+    ReconcileStateText string                  `json:"reconcile_state_text"`
+    CurrentStep        int64                   `json:"current_step"`
+    Steps              []SalesProgressStepItem `json:"steps"`
+}
+
+type SalesProgressListData {
+    List     []SalesProgressListItem `json:"list"`
+    Total    int64                   `json:"total"`
+    Page     int64                   `json:"page"`
+    PageSize int64                   `json:"page_size"`
+}
+
+type SalesProgressListResponse {
+    Code int64                  `json:"code"`
+    Msg  string                 `json:"msg"`
+    Data SalesProgressListData  `json:"data"`
+}
+
+type SalesProgressDetailRequest {
+    SalesOrderId int64 `json:"sales_order_id"`
+}
+
+type SalesProgressDetailLog {
+    ProgressLogId    int64  `json:"progress_log_id"`
+    StepCode         int64  `json:"step_code"`
+    StepName         string `json:"step_name"`
+    StepState        int64  `json:"step_state"`
+    StepStateText    string `json:"step_state_text"`
+    StartTime        string `json:"start_time"`
+    FinishTime       string `json:"finish_time"`
+    OperatorUserName string `json:"operator_user_name"`
+    RelatedNo        string `json:"related_no"`
+    Remark           string `json:"remark"`
+}
+
+type SalesProgressDetailHeader {
+    SalesOrderId       int64  `json:"sales_order_id"`
+    ContractNo         string `json:"contract_no"`
+    CustomerName       string `json:"customer_name"`
+    OrderDate          string `json:"order_date"`
+    DeliveryDate       string `json:"delivery_date"`
+    SalesTotalPrice    string `json:"sales_total_price"`
+    DrawerUserName     string `json:"drawer_user_name"`
+    AuditStatus        string `json:"audit_status"`
+    OrderStateText     string `json:"order_state_text"`
+    ReconcileStateText string `json:"reconcile_state_text"`
+    Remark             string `json:"remark"`
+}
+
+type SalesProgressDetailData {
+    Header SalesProgressDetailHeader `json:"header"`
+    Logs   []SalesProgressDetailLog  `json:"logs"`
+}
+
+type SalesProgressDetailResponse {
+    Code int64                    `json:"code"`
+    Msg  string                   `json:"msg"`
+    Data SalesProgressDetailData  `json:"data"`
+}
+
+type SalesDuplicateListRequest {
+    ContractNo   string `json:"contract_no,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    CreateDate   string `json:"create_date,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesDuplicateListItem {
+    Id                int64  `json:"id"`
+    SalesOrderId      int64  `json:"sales_order_id"`
+    ContractNo        string `json:"contract_no"`
+    CustomerName      string `json:"customer_name"`
+    OrderDate         string `json:"order_date"`
+    DeliveryDate      string `json:"delivery_date"`
+    ProductName       string `json:"product_name"`
+    ProductSpec       string `json:"product_spec"`
+    ProductQuantity   string `json:"product_quantity"`
+    Price             string `json:"price"`
+    SalesTotalPrice   string `json:"sales_total_price"`
+    LogisticsFee      string `json:"logistics_fee"`
+    DiscountRate      string `json:"discount_rate"`
+    InvoiceRequired   int64  `json:"invoice_required"`
+    InvoiceRequiredText string `json:"invoice_required_text"`
+    CustomerTaxNo     string `json:"customer_tax_no"`
+    Remark            string `json:"remark"`
+}
+
+type SalesDuplicateListData {
+    List     []SalesDuplicateListItem `json:"list"`
+    Total    int64                    `json:"total"`
+    Page     int64                    `json:"page"`
+    PageSize int64                    `json:"page_size"`
+}
+
+type SalesDuplicateListResponse {
+    Code int64                   `json:"code"`
+    Msg  string                  `json:"msg"`
+    Data SalesDuplicateListData  `json:"data"`
+}
+
+type SalesDuplicateCreateRequest {
+    SalesOrderId int64 `json:"sales_order_id"`
+}
+
+type SalesDuplicateCreateData {
+    SalesOrderId int64  `json:"sales_order_id"`
+    ContractNo   string `json:"contract_no"`
+}
+
+type SalesDuplicateCreateResponse {
+    Code int64                     `json:"code"`
+    Msg  string                    `json:"msg"`
+    Data SalesDuplicateCreateData  `json:"data"`
+}
+
+type SalesOrderAnalysisListRequest {
+    StatYear  int64 `json:"stat_year,optional"`
+    StatMonth int64 `json:"stat_month,optional"`
+    Page      int64 `json:"page,optional"`
+    PageSize  int64 `json:"page_size,optional"`
+}
+
+type SalesOrderAnalysisListItem {
+    Id                   int64  `json:"id"`
+    ReportOrderMonthId   int64  `json:"report_order_month_id"`
+    StatYear             int64  `json:"stat_year"`
+    StatMonth            int64  `json:"stat_month"`
+    MonthText            string `json:"month_text"`
+    TotalProductQuantity string `json:"total_product_quantity"`
+    TotalShipQuantity    string `json:"total_ship_quantity"`
+    TotalOrderCount      int64  `json:"total_order_count"`
+    TotalAmount          string `json:"total_amount"`
+    Remark               string `json:"remark"`
+}
+
+type SalesOrderAnalysisListData {
+    List     []SalesOrderAnalysisListItem `json:"list"`
+    Total    int64                        `json:"total"`
+    Page     int64                        `json:"page"`
+    PageSize int64                        `json:"page_size"`
+}
+
+type SalesOrderAnalysisListResponse {
+    Code int64                        `json:"code"`
+    Msg  string                       `json:"msg"`
+    Data SalesOrderAnalysisListData   `json:"data"`
+}
+
+type SalesOrderAnalysisDetailRequest {
+    ReportOrderMonthId int64 `json:"report_order_month_id"`
+}
+
+type SalesOrderAnalysisDetailData {
+    ReportOrderMonthId   int64  `json:"report_order_month_id"`
+    StatYear             int64  `json:"stat_year"`
+    StatMonth            int64  `json:"stat_month"`
+    MonthText            string `json:"month_text"`
+    TotalProductQuantity string `json:"total_product_quantity"`
+    TotalShipQuantity    string `json:"total_ship_quantity"`
+    TotalOrderCount      int64  `json:"total_order_count"`
+    TotalAmount          string `json:"total_amount"`
+    Remark               string `json:"remark"`
+}
+
+type SalesOrderAnalysisDetailResponse {
+    Code int64                          `json:"code"`
+    Msg  string                         `json:"msg"`
+    Data SalesOrderAnalysisDetailData   `json:"data"`
+}
+
+type SalesCustomerAnalysisListRequest {
+    StatYear     int64  `json:"stat_year,optional"`
+    StatMonth    int64  `json:"stat_month,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesCustomerAnalysisListItem {
+    Id                    int64  `json:"id"`
+    ReportCustomerMonthId int64  `json:"report_customer_month_id"`
+    StatYear              int64  `json:"stat_year"`
+    StatMonth             int64  `json:"stat_month"`
+    CustomerId            int64  `json:"customer_id"`
+    CustomerName          string `json:"customer_name"`
+    TotalOrderQuantity    string `json:"total_order_quantity"`
+    TotalShipQuantity     string `json:"total_ship_quantity"`
+    TotalOrderCount       int64  `json:"total_order_count"`
+    TotalAmount           string `json:"total_amount"`
+    ClosingDebtAmount     string `json:"closing_debt_amount"`
+    CurrentDebtAmount     string `json:"current_debt_amount"`
+    Remark                string `json:"remark"`
+}
+
+type SalesCustomerAnalysisListData {
+    List     []SalesCustomerAnalysisListItem `json:"list"`
+    Total    int64                           `json:"total"`
+    Page     int64                           `json:"page"`
+    PageSize int64                           `json:"page_size"`
+}
+
+type SalesCustomerAnalysisListResponse {
+    Code int64                           `json:"code"`
+    Msg  string                          `json:"msg"`
+    Data SalesCustomerAnalysisListData   `json:"data"`
+}
+
+type SalesCustomerAnalysisDetailRequest {
+    ReportCustomerMonthId int64 `json:"report_customer_month_id"`
+}
+
+type SalesCustomerAnalysisDetailData {
+    ReportCustomerMonthId int64  `json:"report_customer_month_id"`
+    StatYear              int64  `json:"stat_year"`
+    StatMonth             int64  `json:"stat_month"`
+    CustomerId            int64  `json:"customer_id"`
+    CustomerName          string `json:"customer_name"`
+    TotalOrderQuantity    string `json:"total_order_quantity"`
+    TotalShipQuantity     string `json:"total_ship_quantity"`
+    TotalOrderCount       int64  `json:"total_order_count"`
+    TotalAmount           string `json:"total_amount"`
+    ClosingDebtAmount     string `json:"closing_debt_amount"`
+    CurrentDebtAmount     string `json:"current_debt_amount"`
+    Remark                string `json:"remark"`
+}
+
+type SalesCustomerAnalysisDetailResponse {
+    Code int64                             `json:"code"`
+    Msg  string                            `json:"msg"`
+    Data SalesCustomerAnalysisDetailData   `json:"data"`
+}
+
+type SalesProductListRequest {
+    ContractNo   string `json:"contract_no,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    ProductName  string `json:"product_name,optional"`
+    ProductSpec  string `json:"product_spec,optional"`
+    OrderDate    string `json:"order_date,optional"`
+    OrderType    int64  `json:"order_type,optional"`
+    ShipState    int64  `json:"ship_state,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesProductListItem {
+    Id              int64  `json:"id"`
+    SalesOrderId    int64  `json:"sales_order_id"`
+    SalesOrderItemId int64 `json:"sales_order_item_id"`
+    ContractNo      string `json:"contract_no"`
+    CustomerName    string `json:"customer_name"`
+    OrderDate       string `json:"order_date"`
+    ProductName     string `json:"product_name"`
+    ProductSpec     string `json:"product_spec"`
+    Quantity        string `json:"quantity"`
+    Price           string `json:"price"`
+    Amount          string `json:"amount"`
+    Remark          string `json:"remark"`
+    DrawerUserName  string `json:"drawer_user_name"`
+    OrderType       int64  `json:"order_type"`
+    OrderTypeText   string `json:"order_type_text"`
+    ShipState       int64  `json:"ship_state"`
+    ShipStateText   string `json:"ship_state_text"`
+}
+
+type SalesProductListData {
+    List     []SalesProductListItem `json:"list"`
+    Total    int64                  `json:"total"`
+    Page     int64                  `json:"page"`
+    PageSize int64                  `json:"page_size"`
+}
+
+type SalesProductListResponse {
+    Code int64                  `json:"code"`
+    Msg  string                 `json:"msg"`
+    Data SalesProductListData   `json:"data"`
+}
+
+type SalesProductListDetailRequest {
+    SalesOrderItemId int64 `json:"sales_order_item_id"`
+}
+
+type SalesProductListDetailHeader {
+    SalesOrderId     int64  `json:"sales_order_id"`
+    SalesOrderItemId int64  `json:"sales_order_item_id"`
+    ContractNo       string `json:"contract_no"`
+    CustomerName     string `json:"customer_name"`
+    OrderDate        string `json:"order_date"`
+    DeliveryDate     string `json:"delivery_date"`
+    DrawerUserName   string `json:"drawer_user_name"`
+    OrderTypeText    string `json:"order_type_text"`
+    ShipStateText    string `json:"ship_state_text"`
+    Remark           string `json:"remark"`
+}
+
+type SalesProductListDetailItem {
+    ProductCode string `json:"product_code"`
+    ProductName string `json:"product_name"`
+    ProductSpec string `json:"product_spec"`
+    UnitName    string `json:"unit_name"`
+    Quantity    string `json:"quantity"`
+    Price       string `json:"price"`
+    TaxPrice    string `json:"tax_price"`
+    Amount      string `json:"amount"`
+    TaxAmount   string `json:"tax_amount"`
+}
+
+type SalesProductListDetailData {
+    Header SalesProductListDetailHeader `json:"header"`
+    Item   SalesProductListDetailItem   `json:"item"`
+}
+
+type SalesProductListDetailResponse {
+    Code int64                        `json:"code"`
+    Msg  string                       `json:"msg"`
+    Data SalesProductListDetailData   `json:"data"`
+}
+
+type SalesAnalysisReportListRequest {
+    CustomerName string   `json:"customer_name,optional"`
+    DateRange    []string `json:"date_range,optional"`
+    Page         int64    `json:"page,optional"`
+    PageSize     int64    `json:"page_size,optional"`
+}
+
+type SalesAnalysisReportListItem {
+    Id                    int64  `json:"id"`
+    ReportCustomerDayId   int64  `json:"report_customer_day_id"`
+    StatDate              string `json:"stat_date"`
+    CustomerId            int64  `json:"customer_id"`
+    CustomerName          string `json:"customer_name"`
+    WaterWorkshopQuantity string `json:"water_workshop_quantity"`
+    OilWorkshopQuantity   string `json:"oil_workshop_quantity"`
+    OtherQuantity         string `json:"other_quantity"`
+    ReceivedAmount        string `json:"received_amount"`
+    UnpaidAmount          string `json:"unpaid_amount"`
+    Remark                string `json:"remark"`
+}
+
+type SalesAnalysisReportListData {
+    List     []SalesAnalysisReportListItem `json:"list"`
+    Total    int64                         `json:"total"`
+    Page     int64                         `json:"page"`
+    PageSize int64                         `json:"page_size"`
+}
+
+type SalesAnalysisReportListResponse {
+    Code int64                           `json:"code"`
+    Msg  string                          `json:"msg"`
+    Data SalesAnalysisReportListData     `json:"data"`
+}
+
+type SalesAnalysisReportDetailRequest {
+    ReportCustomerDayId int64 `json:"report_customer_day_id"`
+}
+
+type SalesAnalysisReportDetailData {
+    ReportCustomerDayId   int64  `json:"report_customer_day_id"`
+    StatDate              string `json:"stat_date"`
+    CustomerId            int64  `json:"customer_id"`
+    CustomerName          string `json:"customer_name"`
+    WaterWorkshopQuantity string `json:"water_workshop_quantity"`
+    OilWorkshopQuantity   string `json:"oil_workshop_quantity"`
+    OtherQuantity         string `json:"other_quantity"`
+    ReceivedAmount        string `json:"received_amount"`
+    UnpaidAmount          string `json:"unpaid_amount"`
+    Remark                string `json:"remark"`
+}
+
+type SalesAnalysisReportDetailResponse {
+    Code int64                             `json:"code"`
+    Msg  string                            `json:"msg"`
+    Data SalesAnalysisReportDetailData     `json:"data"`
+}
+
+type SalesOrderReportModuleListRequest {
+    CustomerName string `json:"customer_name,optional"`
+    StatDate     string `json:"stat_date,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesOrderReportModuleListItem {
+    Id                    int64  `json:"id"`
+    ReportCustomerDayId   int64  `json:"report_customer_day_id"`
+    StatDate              string `json:"stat_date"`
+    CustomerId            int64  `json:"customer_id"`
+    CustomerName          string `json:"customer_name"`
+    WaterWorkshopQuantity string `json:"water_workshop_quantity"`
+    OilWorkshopQuantity   string `json:"oil_workshop_quantity"`
+    OtherQuantity         string `json:"other_quantity"`
+    ReceivedAmount        string `json:"received_amount"`
+    UnpaidAmount          string `json:"unpaid_amount"`
+    Remark                string `json:"remark"`
+}
+
+type SalesOrderReportModuleSummary {
+    TotalWaterWorkshopQuantity string `json:"total_water_workshop_quantity"`
+    TotalOilWorkshopQuantity   string `json:"total_oil_workshop_quantity"`
+    TotalOtherQuantity         string `json:"total_other_quantity"`
+    TotalReceivedAmount        string `json:"total_received_amount"`
+    TotalUnpaidAmount          string `json:"total_unpaid_amount"`
+}
+
+type SalesOrderReportModuleListData {
+    List     []SalesOrderReportModuleListItem `json:"list"`
+    Total    int64                            `json:"total"`
+    Page     int64                            `json:"page"`
+    PageSize int64                            `json:"page_size"`
+    Summary  SalesOrderReportModuleSummary    `json:"summary"`
+}
+
+type SalesOrderReportModuleListResponse {
+    Code int64                        `json:"code"`
+    Msg  string                       `json:"msg"`
+    Data SalesOrderReportModuleListData `json:"data"`
+}
+
+type SalesInvoiceRecordBootstrapRequest {}
+
+type SalesInvoiceRecordCandidateOrderItem {
+    SalesOrderId   int64  `json:"sales_order_id"`
+    ContractNo     string `json:"contract_no"`
+    CustomerName   string `json:"customer_name"`
+    OrderDate      string `json:"order_date"`
+    DeliveryDate   string `json:"delivery_date"`
+    TotalTaxAmount string `json:"total_tax_amount"`
+    DrawerUserName string `json:"drawer_user_name"`
+}
+
+type SalesInvoiceRecordBootstrapData {
+    CandidateOrders []SalesInvoiceRecordCandidateOrderItem `json:"candidate_orders"`
+}
+
+type SalesInvoiceRecordBootstrapResponse {
+    Code int64                         `json:"code"`
+    Msg  string                        `json:"msg"`
+    Data SalesInvoiceRecordBootstrapData `json:"data"`
+}
+
+type SalesInvoiceRecordListRequest {
+    InvoiceNo    string `json:"invoice_no,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    InvoiceDate  string `json:"invoice_date,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesInvoiceRecordListItem {
+    Id             int64  `json:"id"`
+    InvoiceId      int64  `json:"invoice_id"`
+    InvoiceNo      string `json:"invoice_no"`
+    CustomerName   string `json:"customer_name"`
+    InvoiceAmount  string `json:"invoice_amount"`
+    DrawerUserName string `json:"drawer_user_name"`
+    InvoiceDate    string `json:"invoice_date"`
+    CreateTime     string `json:"create_time"`
+    AuditState     int64  `json:"audit_state"`
+    AuditStateText string `json:"audit_state_text"`
+}
+
+type SalesInvoiceRecordListData {
+    List     []SalesInvoiceRecordListItem `json:"list"`
+    Total    int64                        `json:"total"`
+    Page     int64                        `json:"page"`
+    PageSize int64                        `json:"page_size"`
+}
+
+type SalesInvoiceRecordListResponse {
+    Code int64                     `json:"code"`
+    Msg  string                    `json:"msg"`
+    Data SalesInvoiceRecordListData `json:"data"`
+}
+
+type SalesInvoiceRecordDetailRequest {
+    InvoiceId int64 `json:"invoice_id"`
+}
+
+type SalesInvoiceRecordDetailBindItem {
+    InvoiceBindId int64  `json:"invoice_bind_id"`
+    SalesOrderId  int64  `json:"sales_order_id"`
+    ContractNo    string `json:"contract_no"`
+    OutboundId    int64  `json:"outbound_id"`
+    OutboundNo    string `json:"outbound_no"`
+    BindAmount    string `json:"bind_amount"`
+    Remark        string `json:"remark"`
+}
+
+type SalesInvoiceRecordDetailData {
+    InvoiceId       int64                              `json:"invoice_id"`
+    InvoiceNo       string                             `json:"invoice_no"`
+    CustomerName    string                             `json:"customer_name"`
+    BuyerTaxNo      string                             `json:"buyer_tax_no"`
+    InvoiceTypeText string                             `json:"invoice_type_text"`
+    InvoiceDate     string                             `json:"invoice_date"`
+    UntaxedAmount   string                             `json:"untaxed_amount"`
+    TaxAmount       string                             `json:"tax_amount"`
+    InvoiceAmount   string                             `json:"invoice_amount"`
+    DrawerUserName  string                             `json:"drawer_user_name"`
+    AuditState      int64                              `json:"audit_state"`
+    AuditStateText  string                             `json:"audit_state_text"`
+    AuditUserName   string                             `json:"audit_user_name"`
+    AuditTime       string                             `json:"audit_time"`
+    CreateTime      string                             `json:"create_time"`
+    Remark          string                             `json:"remark"`
+    BindList        []SalesInvoiceRecordDetailBindItem `json:"bind_list"`
+}
+
+type SalesInvoiceRecordDetailResponse {
+    Code int64                       `json:"code"`
+    Msg  string                      `json:"msg"`
+    Data SalesInvoiceRecordDetailData `json:"data"`
+}
+
+type SalesInvoiceRecordCreateRequest {
+    SalesOrderId int64 `json:"sales_order_id"`
+}
+
+type SalesInvoiceRecordCreateData {
+    InvoiceId  int64  `json:"invoice_id"`
+    InvoiceNo  string `json:"invoice_no"`
+    OutboundNo string `json:"outbound_no"`
+}
+
+type SalesInvoiceRecordCreateResponse {
+    Code int64                       `json:"code"`
+    Msg  string                      `json:"msg"`
+    Data SalesInvoiceRecordCreateData `json:"data"`
+}
+
+type SalesInvoiceRecordReverseAuditRequest {
+    InvoiceId int64 `json:"invoice_id"`
+}
+
+type SalesInvoiceRecordReverseAuditData {}
+
+type SalesInvoiceRecordReverseAuditResponse {
+    Code int64                           `json:"code"`
+    Msg  string                          `json:"msg"`
+    Data SalesInvoiceRecordReverseAuditData `json:"data"`
+}
+
+type SalesCustomerBalanceListRequest {
+    CustomerName string   `json:"customer_name,optional"`
+    DateRange    []string `json:"date_range,optional"`
+    Page         int64    `json:"page,optional"`
+    PageSize     int64    `json:"page_size,optional"`
+}
+
+type SalesCustomerBalanceListItem {
+    Id                 int64  `json:"id"`
+    CustomerId         int64  `json:"customer_id"`
+    CustomerName       string `json:"customer_name"`
+    OrderTotalAmount   string `json:"order_total_amount"`
+    ReceiptTotalAmount string `json:"receipt_total_amount"`
+    OrderUnpaidAmount  string `json:"order_unpaid_amount"`
+    CurrentShipTotal   int64  `json:"current_ship_total"`
+}
+
+type SalesCustomerBalanceSummary {
+    OrderTotalAmount   string `json:"order_total_amount"`
+    ReceiptTotalAmount string `json:"receipt_total_amount"`
+    OrderUnpaidAmount  string `json:"order_unpaid_amount"`
+    CurrentShipTotal   int64  `json:"current_ship_total"`
+}
+
+type SalesCustomerBalanceListData {
+    List     []SalesCustomerBalanceListItem `json:"list"`
+    Total    int64                          `json:"total"`
+    Page     int64                          `json:"page"`
+    PageSize int64                          `json:"page_size"`
+    Summary  SalesCustomerBalanceSummary    `json:"summary"`
+}
+
+type SalesCustomerBalanceListResponse {
+    Code int64                        `json:"code"`
+    Msg  string                       `json:"msg"`
+    Data SalesCustomerBalanceListData `json:"data"`
+}
+
+type SalesCustomerReconciliationListRequest {
+    CustomerName string   `json:"customer_name,optional"`
+    DateRange    []string `json:"date_range,optional"`
+    Page         int64    `json:"page,optional"`
+    PageSize     int64    `json:"page_size,optional"`
+}
+
+type SalesCustomerReconciliationListItem {
+    Id                  int64  `json:"id"`
+    SalesOrderId        int64  `json:"sales_order_id"`
+    CustomerName        string `json:"customer_name"`
+    TotalTaxAmount      string `json:"total_tax_amount"`
+    DiscountAmount      string `json:"discount_amount"`
+    LogisticsFee        string `json:"logistics_fee"`
+    OrderDate           string `json:"order_date"`
+    DeliveryDate        string `json:"delivery_date"`
+    PaymentMethodText   string `json:"payment_method_text"`
+    InvoiceRequiredText string `json:"invoice_required_text"`
+}
+
+type SalesCustomerReconciliationListData {
+    List     []SalesCustomerReconciliationListItem `json:"list"`
+    Total    int64                                 `json:"total"`
+    Page     int64                                 `json:"page"`
+    PageSize int64                                 `json:"page_size"`
+}
+
+type SalesCustomerReconciliationListResponse {
+    Code int64                              `json:"code"`
+    Msg  string                             `json:"msg"`
+    Data SalesCustomerReconciliationListData `json:"data"`
+}
+
+type SalesArrearsListRequest {
+    Page     int64 `json:"page,optional"`
+    PageSize int64 `json:"page_size,optional"`
+}
+
+type SalesArrearsListItem {
+    RankNo      int64  `json:"rank_no"`
+    CustomerId  int64  `json:"customer_id"`
+    CustomerName string `json:"customer_name"`
+}
+
+type SalesArrearsListData {
+    List     []SalesArrearsListItem `json:"list"`
+    Total    int64                  `json:"total"`
+    Page     int64                  `json:"page"`
+    PageSize int64                  `json:"page_size"`
+}
+
+type SalesArrearsListResponse {
+    Code int64              `json:"code"`
+    Msg  string             `json:"msg"`
+    Data SalesArrearsListData `json:"data"`
+}
+
+type SalesArrearsDetailRequest {
+    CustomerId int64 `json:"customer_id"`
+}
+
+type SalesArrearsDetailItem {
+    SalesOrderId   int64  `json:"sales_order_id"`
+    ContractNo     string `json:"contract_no"`
+    OrderDate      string `json:"order_date"`
+    DeliveryDate   string `json:"delivery_date"`
+    TotalTaxAmount string `json:"total_tax_amount"`
+    ReceivedAmount string `json:"received_amount"`
+    UnpaidAmount   string `json:"unpaid_amount"`
+}
+
+type SalesArrearsDetailData {
+    CustomerId        int64                    `json:"customer_id"`
+    CustomerName      string                   `json:"customer_name"`
+    TotalUnpaidAmount string                   `json:"total_unpaid_amount"`
+    OrderList         []SalesArrearsDetailItem `json:"order_list"`
+}
+
+type SalesArrearsDetailResponse {
+    Code int64                `json:"code"`
+    Msg  string               `json:"msg"`
+    Data SalesArrearsDetailData `json:"data"`
+}
+
+type SalesPriceLookupListRequest {
+    CustomerName string `json:"customer_name,optional"`
+    ProductName  string `json:"product_name,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesPriceLookupCustomerColumn {
+    CustomerId   int64  `json:"customer_id"`
+    CustomerName string `json:"customer_name"`
+}
+
+type SalesPriceLookupRow {
+    ProductId   int64             `json:"product_id"`
+    ProductName string            `json:"product_name"`
+    ProductSpec string            `json:"product_spec"`
+    Prices      map[string]string `json:"prices"`
+}
+
+type SalesPriceLookupListData {
+    Customers []SalesPriceLookupCustomerColumn `json:"customers"`
+    List      []SalesPriceLookupRow            `json:"list"`
+    Total     int64                            `json:"total"`
+    Page      int64                            `json:"page"`
+    PageSize  int64                            `json:"page_size"`
+}
+
+type SalesPriceLookupListResponse {
+    Code int64                   `json:"code"`
+    Msg  string                  `json:"msg"`
+    Data SalesPriceLookupListData `json:"data"`
+}
+
+type SalesDeliveryBootstrapRequest {}
+
+type SalesDeliveryCandidateOrder {
+    SalesOrderId    int64  `json:"sales_order_id"`
+    ContractNo      string `json:"contract_no"`
+    CustomerName    string `json:"customer_name"`
+    OrderDate       string `json:"order_date"`
+    DeliveryDate    string `json:"delivery_date"`
+    InvoiceRequired int64  `json:"invoice_required"`
+}
+
+type SalesDeliveryBootstrapData {
+    CandidateOrders []SalesDeliveryCandidateOrder `json:"candidate_orders"`
+}
+
+type SalesDeliveryBootstrapResponse {
+    Code int64                    `json:"code"`
+    Msg  string                   `json:"msg"`
+    Data SalesDeliveryBootstrapData `json:"data"`
+}
+
+type SalesDeliveryListRequest {
+    OutboundNo      string `json:"outbound_no,optional"`
+    CustomerName    string `json:"customer_name,optional"`
+    ProductName     string `json:"product_name,optional"`
+    ProductSpec     string `json:"product_spec,optional"`
+    ShipDate        string `json:"ship_date,optional"`
+    InvoiceRequired int64  `json:"invoice_required,optional"`
+    AuditState      int64  `json:"audit_state,optional"`
+    Page            int64  `json:"page,optional"`
+    PageSize        int64  `json:"page_size,optional"`
+}
+
+type SalesDeliveryListItem {
+    Id                  int64  `json:"id"`
+    OutboundId          int64  `json:"outbound_id"`
+    OutboundNo          string `json:"outbound_no"`
+    DocumentDate        string `json:"document_date"`
+    ShipDate            string `json:"ship_date"`
+    CustomerName        string `json:"customer_name"`
+    ContractNo          string `json:"contract_no"`
+    ProductCode         string `json:"product_code"`
+    ProductName         string `json:"product_name"`
+    ProductSpec         string `json:"product_spec"`
+    UnitName            string `json:"unit_name"`
+    OutboundQuantity    string `json:"outbound_quantity"`
+    InvoiceRequired     int64  `json:"invoice_required"`
+    InvoiceRequiredText string `json:"invoice_required_text"`
+    AuditState          int64  `json:"audit_state"`
+    AuditStateText      string `json:"audit_state_text"`
+}
+
+type SalesDeliveryListData {
+    List     []SalesDeliveryListItem `json:"list"`
+    Total    int64                   `json:"total"`
+    Page     int64                   `json:"page"`
+    PageSize int64                   `json:"page_size"`
+}
+
+type SalesDeliveryListResponse {
+    Code int64                `json:"code"`
+    Msg  string               `json:"msg"`
+    Data SalesDeliveryListData `json:"data"`
+}
+
+type SalesDeliveryDetailRequest {
+    OutboundId int64 `json:"outbound_id"`
+}
+
+type SalesDeliveryDetailHeader {
+    OutboundId             int64  `json:"outbound_id"`
+    OutboundNo             string `json:"outbound_no"`
+    SalesOrderId           int64  `json:"sales_order_id"`
+    ContractNo             string `json:"contract_no"`
+    CustomerId             int64  `json:"customer_id"`
+    CustomerName           string `json:"customer_name"`
+    DocumentDate           string `json:"document_date"`
+    ShipDate               string `json:"ship_date"`
+    OrderDate              string `json:"order_date"`
+    AuditState             int64  `json:"audit_state"`
+    AuditStateText         string `json:"audit_state_text"`
+    InvoiceRequired        int64  `json:"invoice_required"`
+    InvoiceRequiredText    string `json:"invoice_required_text"`
+    TotalQuantity          string `json:"total_quantity"`
+    TotalAmount            string `json:"total_amount"`
+    LogisticsFee           string `json:"logistics_fee"`
+    ExpressNo              string `json:"express_no"`
+    DriverName             string `json:"driver_name"`
+    VehicleNo              string `json:"vehicle_no"`
+    ReceiverName           string `json:"receiver_name"`
+    ReceiverPhone          string `json:"receiver_phone"`
+    ReceiverAddress        string `json:"receiver_address"`
+    PrintCount             int64  `json:"print_count"`
+    PrintWithoutPriceCount int64  `json:"print_without_price_count"`
+    Remark                 string `json:"remark"`
+}
+
+type SalesDeliveryDetailItem {
+    OutboundItemId   int64  `json:"outbound_item_id"`
+    SalesOrderItemId int64  `json:"sales_order_item_id"`
+    LineNo           int64  `json:"line_no"`
+    ProductId        int64  `json:"product_id"`
+    ProductCode      string `json:"product_code"`
+    ProductName      string `json:"product_name"`
+    ProductSpec      string `json:"product_spec"`
+    WarehouseName    string `json:"warehouse_name"`
+    UnitName         string `json:"unit_name"`
+    OutboundQuantity string `json:"outbound_quantity"`
+    Price            string `json:"price"`
+    TaxPrice         string `json:"tax_price"`
+    Amount           string `json:"amount"`
+    TaxAmount        string `json:"tax_amount"`
+    Remark           string `json:"remark"`
+}
+
+type SalesDeliveryDetailData {
+    Header SalesDeliveryDetailHeader `json:"header"`
+    Items  []SalesDeliveryDetailItem `json:"items"`
+}
+
+type SalesDeliveryDetailResponse {
+    Code int64                  `json:"code"`
+    Msg  string                 `json:"msg"`
+    Data SalesDeliveryDetailData `json:"data"`
+}
+
+type SalesDeliverySaveItem {
+    OutboundItemId   int64   `json:"outbound_item_id,optional"`
+    SalesOrderItemId int64   `json:"sales_order_item_id"`
+    OutboundQuantity float64 `json:"outbound_quantity"`
+    Price            float64 `json:"price,optional"`
+    TaxPrice         float64 `json:"tax_price,optional"`
+    Remark           string  `json:"remark,optional"`
+}
+
+type SalesDeliverySaveRequest {
+    OutboundId       int64                  `json:"outbound_id,optional"`
+    SalesOrderId     int64                  `json:"sales_order_id"`
+    DocumentDate     string                 `json:"document_date"`
+    ShipDate         string                 `json:"ship_date,optional"`
+    InvoiceRequired  int64                  `json:"invoice_required"`
+    LogisticsFee     float64                `json:"logistics_fee,optional"`
+    ExpressNo        string                 `json:"express_no,optional"`
+    DriverName       string                 `json:"driver_name,optional"`
+    VehicleNo        string                 `json:"vehicle_no,optional"`
+    ReceiverName     string                 `json:"receiver_name,optional"`
+    ReceiverPhone    string                 `json:"receiver_phone,optional"`
+    ReceiverAddress  string                 `json:"receiver_address,optional"`
+    Remark           string                 `json:"remark,optional"`
+    Items            []SalesDeliverySaveItem `json:"items"`
+}
+
+type SalesDeliverySaveData {
+    OutboundId int64 `json:"outbound_id"`
+}
+
+type SalesDeliverySaveResponse {
+    Code int64               `json:"code"`
+    Msg  string              `json:"msg"`
+    Data SalesDeliverySaveData `json:"data"`
+}
+
+type SalesDeliveryOperateRequest {
+    OutboundId int64 `json:"outbound_id"`
+}
+
+type SalesDeliveryBatchDeleteRequest {
+    OutboundIds []int64 `json:"outbound_ids"`
+}
+
+type SalesDeliveryPrintRequest {
+    OutboundId    int64 `json:"outbound_id"`
+    WithoutPrice  int64 `json:"without_price,optional"`
+}
+
+type SalesDeliveryOperateData {}
+
+type SalesDeliveryOperateResponse {
+    Code int64                   `json:"code"`
+    Msg  string                  `json:"msg"`
+    Data SalesDeliveryOperateData `json:"data"`
+}
+
+type SalesProductReturnBootstrapRequest {}
+
+type SalesProductReturnCandidateOutbound {
+    OutboundId   int64  `json:"outbound_id"`
+    OutboundNo   string `json:"outbound_no"`
+    CustomerName string `json:"customer_name"`
+    ContractNo   string `json:"contract_no"`
+    ShipDate     string `json:"ship_date"`
+}
+
+type SalesProductReturnBootstrapData {
+    CandidateOutbounds []SalesProductReturnCandidateOutbound `json:"candidate_outbounds"`
+}
+
+type SalesProductReturnBootstrapResponse {
+    Code int64                          `json:"code"`
+    Msg  string                         `json:"msg"`
+    Data SalesProductReturnBootstrapData `json:"data"`
+}
+
+type SalesProductReturnListRequest {
+    CustomerName      string `json:"customer_name,optional"`
+    ProductName       string `json:"product_name,optional"`
+    ProductSpec       string `json:"product_spec,optional"`
+    ActualStockinDate string `json:"actual_stockin_date,optional"`
+    Remark            string `json:"remark,optional"`
+    AuditState        int64  `json:"audit_state,optional"`
+    Page              int64  `json:"page,optional"`
+    PageSize          int64  `json:"page_size,optional"`
+}
+
+type SalesProductReturnListItem {
+    Id             int64  `json:"id"`
+    ReturnId       int64  `json:"return_id"`
+    CreateTime     string `json:"create_time"`
+    ReturnNo       string `json:"return_no"`
+    CustomerName   string `json:"customer_name"`
+    ReturnType     int64  `json:"return_type"`
+    ReturnTypeText string `json:"return_type_text"`
+    ProductName    string `json:"product_name"`
+    ProductSpec    string `json:"product_spec"`
+    WarehouseName  string `json:"warehouse_name"`
+    Quantity       string `json:"quantity"`
+    UnitName       string `json:"unit_name"`
+    Price          string `json:"price"`
+    Amount         string `json:"amount"`
+    TotalAmount    string `json:"total_amount"`
+    AuditState     int64  `json:"audit_state"`
+    AuditStateText string `json:"audit_state_text"`
+    MakerUserName  string `json:"maker_user_name"`
+}
+
+type SalesProductReturnListData {
+    List     []SalesProductReturnListItem `json:"list"`
+    Total    int64                        `json:"total"`
+    Page     int64                        `json:"page"`
+    PageSize int64                        `json:"page_size"`
+}
+
+type SalesProductReturnListResponse {
+    Code int64                      `json:"code"`
+    Msg  string                     `json:"msg"`
+    Data SalesProductReturnListData `json:"data"`
+}
+
+type SalesProductReturnDetailRequest {
+    ReturnId int64 `json:"return_id"`
+}
+
+type SalesProductReturnDetailHeader {
+    ReturnId          int64  `json:"return_id"`
+    ReturnNo          string `json:"return_no"`
+    RelatedOutboundId int64  `json:"related_outbound_id"`
+    RelatedOutboundNo string `json:"related_outbound_no"`
+    CustomerId        int64  `json:"customer_id"`
+    CustomerName      string `json:"customer_name"`
+    ReturnType        int64  `json:"return_type"`
+    ReturnTypeText    string `json:"return_type_text"`
+    ActualStockinDate string `json:"actual_stockin_date"`
+    TotalQuantity     string `json:"total_quantity"`
+    TotalAmount       string `json:"total_amount"`
+    AuditState        int64  `json:"audit_state"`
+    AuditStateText    string `json:"audit_state_text"`
+    MakerUserName     string `json:"maker_user_name"`
+    AuditUserName     string `json:"audit_user_name"`
+    AuditTime         string `json:"audit_time"`
+    Remark            string `json:"remark"`
+}
+
+type SalesProductReturnDetailItem {
+    ReturnItemId     int64  `json:"return_item_id"`
+    SalesOrderItemId int64  `json:"sales_order_item_id"`
+    ProductCode      string `json:"product_code"`
+    ProductName      string `json:"product_name"`
+    ProductSpec      string `json:"product_spec"`
+    WarehouseName    string `json:"warehouse_name"`
+    UnitName         string `json:"unit_name"`
+    Quantity         string `json:"quantity"`
+    Price            string `json:"price"`
+    Amount           string `json:"amount"`
+    Remark           string `json:"remark"`
+}
+
+type SalesProductReturnDetailData {
+    Header SalesProductReturnDetailHeader `json:"header"`
+    Items  []SalesProductReturnDetailItem `json:"items"`
+}
+
+type SalesProductReturnDetailResponse {
+    Code int64                        `json:"code"`
+    Msg  string                       `json:"msg"`
+    Data SalesProductReturnDetailData `json:"data"`
+}
+
+type SalesProductReturnSaveItem {
+    ReturnItemId     int64   `json:"return_item_id,optional"`
+    SalesOrderItemId int64   `json:"sales_order_item_id"`
+    Quantity         float64 `json:"quantity"`
+    Price            float64 `json:"price,optional"`
+    Remark           string  `json:"remark,optional"`
+}
+
+type SalesProductReturnSaveRequest {
+    ReturnId          int64                        `json:"return_id,optional"`
+    RelatedOutboundId int64                        `json:"related_outbound_id"`
+    ReturnType        int64                        `json:"return_type"`
+    ActualStockinDate string                       `json:"actual_stockin_date,optional"`
+    Remark            string                       `json:"remark,optional"`
+    Items             []SalesProductReturnSaveItem `json:"items"`
+}
+
+type SalesProductReturnSaveData {
+    ReturnId int64 `json:"return_id"`
+}
+
+type SalesProductReturnSaveResponse {
+    Code int64                      `json:"code"`
+    Msg  string                     `json:"msg"`
+    Data SalesProductReturnSaveData `json:"data"`
+}
+
+type SalesProductReturnOperateRequest {
+    ReturnId int64 `json:"return_id"`
+}
+
+type SalesProductReturnBatchDeleteRequest {
+    ReturnIds []int64 `json:"return_ids"`
+}
+
+type SalesProductReturnOperateData {}
+
+type SalesProductReturnOperateResponse {
+    Code int64                         `json:"code"`
+    Msg  string                        `json:"msg"`
+    Data SalesProductReturnOperateData `json:"data"`
+}
+
+type SalesFreightReportListRequest {
+    OutboundNo   string `json:"outbound_no,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    DocumentDate string `json:"document_date,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesFreightReportListItem {
+    Id            int64  `json:"id"`
+    OutboundId    int64  `json:"outbound_id"`
+    CustomerName  string `json:"customer_name"`
+    OutboundNo    string `json:"outbound_no"`
+    DocumentDate  string `json:"document_date"`
+    ExpressNo     string `json:"express_no"`
+    LogisticsFee  string `json:"logistics_fee"`
+    DriverName    string `json:"driver_name"`
+    VehicleNo     string `json:"vehicle_no"`
+    ShipDate      string `json:"ship_date"`
+    MakerUserName string `json:"maker_user_name"`
+    CreateTime    string `json:"create_time"`
+}
+
+type SalesFreightReportListData {
+    List     []SalesFreightReportListItem `json:"list"`
+    Total    int64                        `json:"total"`
+    Page     int64                        `json:"page"`
+    PageSize int64                        `json:"page_size"`
+}
+
+type SalesFreightReportListResponse {
+    Code int64                      `json:"code"`
+    Msg  string                     `json:"msg"`
+    Data SalesFreightReportListData `json:"data"`
+}
+
+type SalesFreightReportUpdateRequest {
+    OutboundId   int64  `json:"outbound_id"`
+    ExpressNo    string `json:"express_no,optional"`
+    LogisticsFee string `json:"logistics_fee,optional"`
+    DriverName   string `json:"driver_name,optional"`
+    VehicleNo    string `json:"vehicle_no,optional"`
+}
+
+type SalesFreightReportUpdateData {}
+
+type SalesFreightReportUpdateResponse {
+    Code int64                        `json:"code"`
+    Msg  string                       `json:"msg"`
+    Data SalesFreightReportUpdateData `json:"data"`
+}
+
+type SalesComplaintListRequest {
+    ContractNo   string `json:"contract_no,optional"`
+    CustomerName string `json:"customer_name,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesComplaintScoreData {
+    ProductQuality      int64 `json:"product_quality"`
+    DeliveryResponse    int64 `json:"delivery_response"`
+    PreAfterService     int64 `json:"pre_after_service"`
+    PricePerformance    int64 `json:"price_performance"`
+    Customization       int64 `json:"customization"`
+    CooperationRelation int64 `json:"cooperation_relation"`
+}
+
+type SalesComplaintListItem {
+    Id             int64                  `json:"id"`
+    FeedbackId     int64                  `json:"feedback_id"`
+    SalesOrderId   int64                  `json:"sales_order_id"`
+    ContractNo     string                 `json:"contract_no"`
+    CustomerName   string                 `json:"customer_name"`
+    ComplaintCount int64                  `json:"complaint_count"`
+    Scores         SalesComplaintScoreData `json:"scores"`
+    OrderDate      string                 `json:"order_date"`
+    DeliveryDate   string                 `json:"delivery_date"`
+    DrawerUserName string                 `json:"drawer_user_name"`
+    FeedbackToken  string                 `json:"feedback_token"`
+}
+
+type SalesComplaintListData {
+    List     []SalesComplaintListItem `json:"list"`
+    Total    int64                    `json:"total"`
+    Page     int64                    `json:"page"`
+    PageSize int64                    `json:"page_size"`
+}
+
+type SalesComplaintListResponse {
+    Code int64                  `json:"code"`
+    Msg  string                 `json:"msg"`
+    Data SalesComplaintListData `json:"data"`
+}
+
+type SalesSatisfactionListRequest {
+    CustomerName string `json:"customer_name,optional"`
+    Page         int64  `json:"page,optional"`
+    PageSize     int64  `json:"page_size,optional"`
+}
+
+type SalesSatisfactionScoreData {
+    ProductQuality      float64 `json:"product_quality"`
+    DeliveryResponse    float64 `json:"delivery_response"`
+    PreAfterService     float64 `json:"pre_after_service"`
+    PricePerformance    float64 `json:"price_performance"`
+    Customization       float64 `json:"customization"`
+    CooperationRelation float64 `json:"cooperation_relation"`
+}
+
+type SalesSatisfactionListItem {
+    Id             int64                    `json:"id"`
+    CustomerId     int64                    `json:"customer_id"`
+    CustomerName   string                   `json:"customer_name"`
+    ComplaintCount int64                    `json:"complaint_count"`
+    Scores         SalesSatisfactionScoreData `json:"scores"`
+    OverallScore   float64                  `json:"overall_score"`
+}
+
+type SalesSatisfactionListData {
+    List     []SalesSatisfactionListItem `json:"list"`
+    Total    int64                       `json:"total"`
+    Page     int64                       `json:"page"`
+    PageSize int64                       `json:"page_size"`
+}
+
+type SalesSatisfactionListResponse {
+    Code int64                     `json:"code"`
+    Msg  string                    `json:"msg"`
+    Data SalesSatisfactionListData `json:"data"`
+}

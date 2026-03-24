@@ -1,12 +1,3 @@
-/*
- * ERP 生产模块数据库设计（MySQL 8.x）
- * 设计说明：
- * 1. 本模块与销售模块、基础资料模块通过逻辑外键关联，不强制建立数据库外键。
- * 2. 销售生产单、生产追溯、工作台报工、工序报工记录、工人列表、生产排程，统一由“生产单 + 工序任务 + 报工记录 + 排程记录”驱动。
- * 3. 沿用你的字段规范：id / del_state / del_time / create_time。
- * 4. 数量统一保留 4 位小数，比例/进度统一保留 2 位小数。
- * 5. 默认 user、sales_customer、sales_product、sales_order、sales_order_item 表已存在。
- */
 
 SET NAMES utf8mb4;
 

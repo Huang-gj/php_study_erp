@@ -34,6 +34,11 @@ declare interface Window {
 	BMap: any;
 }
 
+declare const __API_BASE_URL__: string;
+declare const __API_TARGET__: string;
+declare const __DEPLOY_TARGET__: 'local' | 'server';
+declare const __LOGIN_IP_FALLBACK__: string;
+
 // 声明路由当前项类型
 declare type RouteItem<T = any> = {
 	path: string;

@@ -4,7 +4,7 @@ import { Session } from '/@/utils/storage';
 import qs from 'qs';
 
 const service: AxiosInstance = axios.create({
-	baseURL: import.meta.env.VITE_API_URL,
+	baseURL: __API_BASE_URL__,
 	timeout: 50000,
 	headers: { 'Content-Type': 'application/json' },
 	paramsSerializer: {

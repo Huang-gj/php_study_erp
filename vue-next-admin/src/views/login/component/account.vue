@@ -104,7 +104,7 @@ const onSignIn = async () => {
 		const res: any = await loginApi.signIn({
 			username: state.ruleForm.userName.trim(),
 			password: state.ruleForm.password,
-			login_ip: window.location.hostname || '127.0.0.1',
+			login_ip: window.location.hostname || __LOGIN_IP_FALLBACK__,
 			device_name: buildDeviceName(),
 			client_type: 'web',
 		});

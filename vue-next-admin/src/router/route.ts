@@ -4,6 +4,25 @@ const layout = () => import('/@/layout/index.vue');
 const parentView = () => import('/@/layout/routerView/parent.vue');
 const placeholderView = () => import('/@/views/tools/index.vue');
 const salesReportView = () => import('/@/views/sales/report/index.vue');
+const salesOrderView = () => import('/@/views/sales/order/index.vue');
+const salesBusinessView = () => import('/@/views/sales/business/index.vue');
+const salesProgressView = () => import('/@/views/sales/progress/index.vue');
+const salesDuplicateView = () => import('/@/views/sales/duplicate-order/index.vue');
+const salesOrderAnalysisView = () => import('/@/views/sales/order-analysis/index.vue');
+const salesCustomerAnalysisView = () => import('/@/views/sales/customer-analysis/index.vue');
+const salesProductListView = () => import('/@/views/sales/product-list/index.vue');
+const salesAnalysisReportView = () => import('/@/views/sales/analysis-report/index.vue');
+const salesOrderReportView = () => import('/@/views/sales/order-report/index.vue');
+const salesInvoiceRecordView = () => import('/@/views/sales/invoice-record/index.vue');
+const salesCustomerBalanceView = () => import('/@/views/sales/customer-balance/index.vue');
+const salesCustomerReconciliationView = () => import('/@/views/sales/customer-reconciliation/index.vue');
+const salesArrearsView = () => import('/@/views/sales/arrears/index.vue');
+const salesPriceLookupView = () => import('/@/views/sales/price-lookup/index.vue');
+const salesDeliveryView = () => import('/@/views/sales/delivery/index.vue');
+const salesProductReturnView = () => import('/@/views/sales/product-return/index.vue');
+const salesFreightReportView = () => import('/@/views/sales/freight-report/index.vue');
+const salesComplaintView = () => import('/@/views/sales/complaint/index.vue');
+const salesSatisfactionView = () => import('/@/views/sales/satisfaction/index.vue');
 
 const menuMeta = (title: string, icon: string, roles: string[] = ['admin', 'common']) => ({
 	title,
@@ -32,21 +51,21 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 				meta: menuMeta('销售', 'ele-Sell'),
 				children: [
 					{ path: '/sales/report', name: 'salesReport', component: salesReportView, meta: menuMeta('订单报表', 'ele-Files') },
-					{ path: '/sales/order', name: 'salesOrder', component: placeholderView, meta: menuMeta('销售单', 'ele-Tickets') },
-					{ path: '/sales/business', name: 'salesBusiness', component: placeholderView, meta: menuMeta('业务单', 'ele-Link') },
-					{ path: '/sales/progress', name: 'salesProgress', component: placeholderView, meta: menuMeta('销售进度', 'ele-Connection') },
-					{ path: '/sales/duplicate-order', name: 'salesDuplicateOrder', component: placeholderView, meta: menuMeta('翻单', 'ele-DocumentCopy') },
-					{ path: '/sales/order-report', name: 'salesOrderReport', component: placeholderView, meta: menuMeta('销售报表', 'ele-Document') },
-					{ path: '/sales/order-analysis', name: 'salesOrderAnalysis', component: placeholderView, meta: menuMeta('订单分析表', 'ele-Histogram') },
-					{ path: '/sales/customer-analysis', name: 'salesCustomerAnalysis', component: placeholderView, meta: menuMeta('客户分析表', 'ele-DataAnalysis') },
-					{ path: '/sales/product-list', name: 'salesProductList', component: placeholderView, meta: menuMeta('销售产品清单', 'ele-List') },
-					{ path: '/sales/analysis-report', name: 'salesAnalysisReport', component: placeholderView, meta: menuMeta('销售分析表', 'ele-PieChart') },
+					{ path: '/sales/order', name: 'salesOrder', component: salesOrderView, meta: menuMeta('销售单', 'ele-Tickets') },
+					{ path: '/sales/business', name: 'salesBusiness', component: salesBusinessView, meta: menuMeta('业务单', 'ele-Link') },
+					{ path: '/sales/progress', name: 'salesProgress', component: salesProgressView, meta: menuMeta('销售进度', 'ele-Connection') },
+					{ path: '/sales/duplicate-order', name: 'salesDuplicateOrder', component: salesDuplicateView, meta: menuMeta('翻单', 'ele-DocumentCopy') },
+					{ path: '/sales/order-report', name: 'salesOrderReport', component: salesOrderReportView, meta: menuMeta('销售报表', 'ele-Document') },
+					{ path: '/sales/order-analysis', name: 'salesOrderAnalysis', component: salesOrderAnalysisView, meta: menuMeta('订单分析表', 'ele-Histogram') },
+					{ path: '/sales/customer-analysis', name: 'salesCustomerAnalysis', component: salesCustomerAnalysisView, meta: menuMeta('客户分析表', 'ele-DataAnalysis') },
+					{ path: '/sales/product-list', name: 'salesProductList', component: salesProductListView, meta: menuMeta('销售产品清单', 'ele-List') },
+					{ path: '/sales/analysis-report', name: 'salesAnalysisReport', component: salesAnalysisReportView, meta: menuMeta('销售分析表', 'ele-PieChart') },
 	
-					{ path: '/sales/invoice-record', name: 'salesInvoiceRecord', component: placeholderView, meta: menuMeta('销售开票记录', 'ele-DocumentChecked') },
-					{ path: '/sales/customer-balance', name: 'salesCustomerBalance', component: placeholderView, meta: menuMeta('客户余额统计', 'ele-Coin') },
-					{ path: '/sales/customer-reconciliation', name: 'salesCustomerReconciliation', component: placeholderView, meta: menuMeta('客户对账统计', 'ele-Postcard') },
-					{ path: '/sales/arrears', name: 'salesArrears', component: placeholderView, meta: menuMeta('欠款统计', 'ele-Warning') },
-					{ path: '/sales/price-lookup', name: 'salesPriceLookup', component: placeholderView, meta: menuMeta('价格速查', 'ele-Search') },
+					{ path: '/sales/invoice-record', name: 'salesInvoiceRecord', component: salesInvoiceRecordView, meta: menuMeta('销售开票记录', 'ele-DocumentChecked') },
+					{ path: '/sales/customer-balance', name: 'salesCustomerBalance', component: salesCustomerBalanceView, meta: menuMeta('客户余额统计', 'ele-Coin') },
+					{ path: '/sales/customer-reconciliation', name: 'salesCustomerReconciliation', component: salesCustomerReconciliationView, meta: menuMeta('客户对账统计', 'ele-Postcard') },
+					{ path: '/sales/arrears', name: 'salesArrears', component: salesArrearsView, meta: menuMeta('欠款统计', 'ele-Warning') },
+					{ path: '/sales/price-lookup', name: 'salesPriceLookup', component: salesPriceLookupView, meta: menuMeta('价格速查', 'ele-Search') },
 					{
 						path: '/sales/delivery-return',
 						name: 'salesDeliveryReturn',
@@ -54,9 +73,9 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 						redirect: '/sales/delivery-return/delivery',
 						meta: menuMeta('发货退货管理', 'ele-Box'),
 						children: [
-							{ path: '/sales/delivery-return/delivery', name: 'salesDelivery', component: placeholderView, meta: menuMeta('发货', 'ele-Van') },
-							{ path: '/sales/delivery-return/product-return', name: 'salesProductReturn', component: placeholderView, meta: menuMeta('产品退货', 'ele-RefreshLeft') },
-							{ path: '/sales/delivery-return/freight-report', name: 'salesFreightReport', component: placeholderView, meta: menuMeta('运费报表', 'ele-DataLine') },
+							{ path: '/sales/delivery-return/delivery', name: 'salesDelivery', component: salesDeliveryView, meta: menuMeta('发货', 'ele-Van') },
+							{ path: '/sales/delivery-return/product-return', name: 'salesProductReturn', component: salesProductReturnView, meta: menuMeta('产品退货', 'ele-RefreshLeft') },
+							{ path: '/sales/delivery-return/freight-report', name: 'salesFreightReport', component: salesFreightReportView, meta: menuMeta('运费报表', 'ele-DataLine') },
 						],
 					},
 					{
@@ -66,8 +85,8 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 						redirect: '/sales/after-sales/complaint',
 						meta: menuMeta('售后管理', 'ele-Service'),
 						children: [
-							{ path: '/sales/after-sales/complaint', name: 'salesComplaint', component: placeholderView, meta: menuMeta('客户投诉', 'ele-ChatLineRound') },
-							{ path: '/sales/after-sales/satisfaction', name: 'salesSatisfaction', component: placeholderView, meta: menuMeta('客户满意度', 'ele-Star') },
+							{ path: '/sales/after-sales/complaint', name: 'salesComplaint', component: salesComplaintView, meta: menuMeta('客户投诉', 'ele-ChatLineRound') },
+							{ path: '/sales/after-sales/satisfaction', name: 'salesSatisfaction', component: salesSatisfactionView, meta: menuMeta('客户满意度', 'ele-Star') },
 						],
 					},
 				],

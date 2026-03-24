@@ -47,3 +47,298 @@ service sales {
     @handler SalesOrderList
     post /order-list (SalesOrderListRequest) returns (SalesOrderListResponse)
 }
+
+@server (
+    prefix: sales/order
+    jwt:    Auth
+    group:  order
+)
+service sales {
+    @handler SalesOrderBootstrap
+    post /bootstrap (SalesOrderBootstrapRequest) returns (SalesOrderBootstrapResponse)
+
+    @handler SalesOrderModuleList
+    post /list (SalesOrderModuleListRequest) returns (SalesOrderModuleListResponse)
+
+    @handler SalesOrderDetail
+    post /detail (SalesOrderDetailRequest) returns (SalesOrderDetailResponse)
+
+    @handler SalesOrderCreate
+    post /create (SalesOrderCreateRequest) returns (SalesOrderCreateResponse)
+
+    @handler SalesOrderAuditPass
+    post /audit-pass (SalesOrderOperateRequest) returns (SalesOrderOperateResponse)
+
+    @handler SalesOrderShipInvoice
+    post /ship-invoice (SalesOrderOperateRequest) returns (SalesOrderShipInvoiceResponse)
+}
+
+@server (
+    prefix: sales/business
+    jwt:    Auth
+    group:  business
+)
+service sales {
+    @handler SalesBusinessBootstrap
+    post /bootstrap (SalesBusinessBootstrapRequest) returns (SalesBusinessBootstrapResponse)
+
+    @handler SalesBusinessList
+    post /list (SalesBusinessListRequest) returns (SalesBusinessListResponse)
+
+    @handler SalesBusinessDetail
+    post /detail (SalesBusinessDetailRequest) returns (SalesBusinessDetailResponse)
+
+    @handler SalesBusinessCreate
+    post /create (SalesBusinessCreateRequest) returns (SalesBusinessCreateResponse)
+
+    @handler SalesBusinessBatchDelete
+    post /batch-delete (SalesBusinessBatchDeleteRequest) returns (SalesBusinessBatchDeleteResponse)
+
+    @handler SalesBusinessGenerateSalesOrder
+    post /generate-sales-order (SalesBusinessGenerateSalesOrderRequest) returns (SalesBusinessGenerateSalesOrderResponse)
+}
+
+@server (
+    prefix: sales/progress
+    jwt:    Auth
+    group:  progress
+)
+service sales {
+    @handler SalesProgressList
+    post /list (SalesProgressListRequest) returns (SalesProgressListResponse)
+
+    @handler SalesProgressDetail
+    post /detail (SalesProgressDetailRequest) returns (SalesProgressDetailResponse)
+}
+
+@server (
+    prefix: sales/duplicate
+    jwt:    Auth
+    group:  duplicate
+)
+service sales {
+    @handler SalesDuplicateList
+    post /list (SalesDuplicateListRequest) returns (SalesDuplicateListResponse)
+
+    @handler SalesDuplicateCreate
+    post /create (SalesDuplicateCreateRequest) returns (SalesDuplicateCreateResponse)
+}
+
+@server (
+    prefix: sales/order-analysis
+    jwt:    Auth
+    group:  analysis
+)
+service sales {
+    @handler SalesOrderAnalysisList
+    post /list (SalesOrderAnalysisListRequest) returns (SalesOrderAnalysisListResponse)
+
+    @handler SalesOrderAnalysisDetail
+    post /detail (SalesOrderAnalysisDetailRequest) returns (SalesOrderAnalysisDetailResponse)
+}
+
+@server (
+    prefix: sales/customer-analysis
+    jwt:    Auth
+    group:  customer-analysis
+)
+service sales {
+    @handler SalesCustomerAnalysisList
+    post /list (SalesCustomerAnalysisListRequest) returns (SalesCustomerAnalysisListResponse)
+
+    @handler SalesCustomerAnalysisDetail
+    post /detail (SalesCustomerAnalysisDetailRequest) returns (SalesCustomerAnalysisDetailResponse)
+}
+
+@server (
+    prefix: sales/product-list
+    jwt:    Auth
+    group:  product-list
+)
+service sales {
+    @handler SalesProductList
+    post /list (SalesProductListRequest) returns (SalesProductListResponse)
+
+    @handler SalesProductListDetail
+    post /detail (SalesProductListDetailRequest) returns (SalesProductListDetailResponse)
+}
+
+@server (
+    prefix: sales/analysis-report
+    jwt:    Auth
+    group:  analysis-report
+)
+service sales {
+    @handler SalesAnalysisReportList
+    post /list (SalesAnalysisReportListRequest) returns (SalesAnalysisReportListResponse)
+
+    @handler SalesAnalysisReportDetail
+    post /detail (SalesAnalysisReportDetailRequest) returns (SalesAnalysisReportDetailResponse)
+}
+
+@server (
+    prefix: sales/order-report
+    jwt:    Auth
+    group:  order-report
+)
+service sales {
+    @handler SalesOrderReportModuleList
+    post /list (SalesOrderReportModuleListRequest) returns (SalesOrderReportModuleListResponse)
+}
+
+@server (
+    prefix: sales/invoice-record
+    jwt:    Auth
+    group:  invoice-record
+)
+service sales {
+    @handler SalesInvoiceRecordBootstrap
+    post /bootstrap (SalesInvoiceRecordBootstrapRequest) returns (SalesInvoiceRecordBootstrapResponse)
+
+    @handler SalesInvoiceRecordList
+    post /list (SalesInvoiceRecordListRequest) returns (SalesInvoiceRecordListResponse)
+
+    @handler SalesInvoiceRecordDetail
+    post /detail (SalesInvoiceRecordDetailRequest) returns (SalesInvoiceRecordDetailResponse)
+
+    @handler SalesInvoiceRecordCreate
+    post /create (SalesInvoiceRecordCreateRequest) returns (SalesInvoiceRecordCreateResponse)
+
+    @handler SalesInvoiceRecordReverseAudit
+    post /reverse-audit (SalesInvoiceRecordReverseAuditRequest) returns (SalesInvoiceRecordReverseAuditResponse)
+}
+
+@server (
+    prefix: sales/customer-balance
+    jwt:    Auth
+    group:  customer-balance
+)
+service sales {
+    @handler SalesCustomerBalanceList
+    post /list (SalesCustomerBalanceListRequest) returns (SalesCustomerBalanceListResponse)
+}
+
+@server (
+    prefix: sales/customer-reconciliation
+    jwt:    Auth
+    group:  customer-reconciliation
+)
+service sales {
+    @handler SalesCustomerReconciliationList
+    post /list (SalesCustomerReconciliationListRequest) returns (SalesCustomerReconciliationListResponse)
+}
+
+@server (
+    prefix: sales/arrears
+    jwt:    Auth
+    group:  arrears
+)
+service sales {
+    @handler SalesArrearsList
+    post /list (SalesArrearsListRequest) returns (SalesArrearsListResponse)
+
+    @handler SalesArrearsDetail
+    post /detail (SalesArrearsDetailRequest) returns (SalesArrearsDetailResponse)
+}
+
+@server (
+    prefix: sales/price-lookup
+    jwt:    Auth
+    group:  price-lookup
+)
+service sales {
+    @handler SalesPriceLookupList
+    post /list (SalesPriceLookupListRequest) returns (SalesPriceLookupListResponse)
+}
+
+@server (
+    prefix: sales/delivery
+    jwt:    Auth
+    group:  delivery
+)
+service sales {
+    @handler SalesDeliveryBootstrap
+    post /bootstrap (SalesDeliveryBootstrapRequest) returns (SalesDeliveryBootstrapResponse)
+
+    @handler SalesDeliveryList
+    post /list (SalesDeliveryListRequest) returns (SalesDeliveryListResponse)
+
+    @handler SalesDeliveryDetail
+    post /detail (SalesDeliveryDetailRequest) returns (SalesDeliveryDetailResponse)
+
+    @handler SalesDeliverySave
+    post /save (SalesDeliverySaveRequest) returns (SalesDeliverySaveResponse)
+
+    @handler SalesDeliveryAuditPass
+    post /audit-pass (SalesDeliveryOperateRequest) returns (SalesDeliveryOperateResponse)
+
+    @handler SalesDeliveryReverseAudit
+    post /reverse-audit (SalesDeliveryOperateRequest) returns (SalesDeliveryOperateResponse)
+
+    @handler SalesDeliveryBatchDelete
+    post /batch-delete (SalesDeliveryBatchDeleteRequest) returns (SalesDeliveryOperateResponse)
+
+    @handler SalesDeliveryPrint
+    post /print (SalesDeliveryPrintRequest) returns (SalesDeliveryOperateResponse)
+}
+
+@server (
+    prefix: sales/product-return
+    jwt:    Auth
+    group:  product-return
+)
+service sales {
+    @handler SalesProductReturnBootstrap
+    post /bootstrap (SalesProductReturnBootstrapRequest) returns (SalesProductReturnBootstrapResponse)
+
+    @handler SalesProductReturnList
+    post /list (SalesProductReturnListRequest) returns (SalesProductReturnListResponse)
+
+    @handler SalesProductReturnDetail
+    post /detail (SalesProductReturnDetailRequest) returns (SalesProductReturnDetailResponse)
+
+    @handler SalesProductReturnSave
+    post /save (SalesProductReturnSaveRequest) returns (SalesProductReturnSaveResponse)
+
+    @handler SalesProductReturnAuditPass
+    post /audit-pass (SalesProductReturnOperateRequest) returns (SalesProductReturnOperateResponse)
+
+    @handler SalesProductReturnReverseAudit
+    post /reverse-audit (SalesProductReturnOperateRequest) returns (SalesProductReturnOperateResponse)
+
+    @handler SalesProductReturnBatchDelete
+    post /batch-delete (SalesProductReturnBatchDeleteRequest) returns (SalesProductReturnOperateResponse)
+}
+
+@server (
+    prefix: sales/freight-report
+    jwt:    Auth
+    group:  freight-report
+)
+service sales {
+    @handler SalesFreightReportList
+    post /list (SalesFreightReportListRequest) returns (SalesFreightReportListResponse)
+
+    @handler SalesFreightReportUpdate
+    post /update (SalesFreightReportUpdateRequest) returns (SalesFreightReportUpdateResponse)
+}
+
+@server (
+    prefix: sales/complaint
+    jwt:    Auth
+    group:  complaint
+)
+service sales {
+    @handler SalesComplaintList
+    post /list (SalesComplaintListRequest) returns (SalesComplaintListResponse)
+}
+
+@server (
+    prefix: sales/satisfaction
+    jwt:    Auth
+    group:  satisfaction
+)
+service sales {
+    @handler SalesSatisfactionList
+    post /list (SalesSatisfactionListRequest) returns (SalesSatisfactionListResponse)
+}

@@ -5,7 +5,7 @@
 				<el-icon><ele-DArrowRight /></el-icon>
 				<span>订单情况列表</span>
 			</div>
-			<el-button plain class="report-header__export">导出excel</el-button>
+			<el-button plain class="report-header__export" @click="onExportExcel">导出excel</el-button>
 		</section>
 
 		<section class="summary-grid">
@@ -90,6 +90,7 @@
 import { onMounted, reactive, ref } from 'vue';
 import { ElMessage } from 'element-plus';
 import { useSalesReportApi, type SalesOrderReportItem } from '/@/api/sales/index';
+import { exportExcel } from '/@/utils/exportExcel';
 
 const salesReportApi = useSalesReportApi();
 
@@ -186,6 +187,26 @@ const onSearch = () => {
 const onPageChange = (page: number) => {
 	pagination.page = page;
 	loadOrderList();
+};
+
+const onExportExcel = () => {
+	exportExcel({
+		filename: '订单情况列表',
+		columns: [
+			{ label: '审核状态', prop: 'audit_status' },
+			{ label: '编号', prop: 'contract_text' },
+			{ label: '客户信息', prop: 'customer_info' },
+			{ label: '订单日期', prop: 'order_date' },
+			{ label: '交货日期', prop: 'delivery_date' },
+			{ label: '名称', prop: 'product_name' },
+			{ label: '规格', prop: 'specification' },
+			{ label: '订单数量', prop: 'order_quantity' },
+			{ label: '单价', prop: 'unit_price' },
+			{ label: '发货数量', prop: 'ship_quantity' },
+			{ label: '装车日期', prop: 'load_date' },
+		],
+		data: tableRows.value,
+	});
 };
 
 onMounted(async () => {

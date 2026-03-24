@@ -11,8 +11,8 @@ export const useThemeConfig = defineStore('themeConfig', {
 			isIsDark: false,
 
 			// Top bar
-			topBar: '#0b66a3',
-			topBarColor: '#ffffff',
+			topBar: '#ffffff',
+			topBarColor: '#303133',
 			isTopBarColorGradual: false,
 
 			// Side menu
@@ -49,7 +49,7 @@ export const useThemeConfig = defineStore('themeConfig', {
 			isFooter: false,
 			isGrayscale: false,
 			isInvert: false,
-			isWartermark: true,
+			isWartermark: false,
 			wartermarkText: '东氩科技信息管理系统（仿制）',
 
 			// Extra UI config
